@@ -6,6 +6,7 @@ import annotations.LangEdges;
 import annotations.LangNode;
 import core.ConditionEvaluator;
 import core.NodeAction;
+import engine.GraphRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import jakarta.annotation.PostConstruct;
@@ -14,6 +15,22 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 
+/**
+ * Spring Boot Configuration class that auto-detects and wires the Graph.
+ * <p>
+ * This class listens for the ApplicationContext initialization. It scans all Spring Beans
+ * for the {@link com.springgraph.annotations.LangNode} annotation.
+ * </p>
+ * <p>
+ * It performs three main tasks:
+ * <ol>
+ * <li>Registers all Nodes into the {@link com.springgraph.engine.GraphRegistry}.</li>
+ * <li>Parses {@link com.springgraph.annotations.LangEdge} to register static routes.</li>
+ * <li>Parses {@link com.springgraph.annotations.LangConditionalEdge} to register dynamic routers.</li>
+ * <li>Validates the graph topology (e.g., ensuring a Start Node exists).</li>
+ * </ol>
+ * </p>
+ */
 @Configuration
 public class GraphAutoConfigurer {
 

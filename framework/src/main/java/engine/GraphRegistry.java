@@ -7,6 +7,21 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The internal registry that holds the structure of the compiled graph.
+ * <p>
+ * This class acts as the "routing table" for the framework. It stores mappings of:
+ * <ul>
+ * <li>Node Names -> Node Action Instances</li>
+ * <li>Source Nodes -> Target Nodes (Static Edges)</li>
+ * <li>Source Nodes -> Condition Evaluators (Dynamic Edges)</li>
+ * </ul>
+ * </p>
+ * <p>
+ * It is populated at startup by {@link com.springgraph.config.GraphAutoConfigurer} and
+ * queried at runtime by {@link GraphExecutor}.
+ * </p>
+ */
 @Service
 public class GraphRegistry {
     private final Map<String, NodeAction> nodes = new HashMap<>();
