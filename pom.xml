@@ -7,6 +7,10 @@
     <groupId>com.db.poc</groupId>
     <artifactId>kyc-agent-gemini</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>framework</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -35,10 +39,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-model-google-genai</artifactId>
-        </dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>6.0.12</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.ai</groupId>
